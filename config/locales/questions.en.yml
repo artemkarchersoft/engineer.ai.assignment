@@ -3,6 +3,7 @@ en:
     title: Questions
     new: Add a question
     submit: publish
+    new_answers: (%{count} new answers)
     edit: Edit
     follow: Follow
     unfollow: Unfollow

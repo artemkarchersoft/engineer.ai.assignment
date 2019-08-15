@@ -1,0 +1,15 @@
+<li>
+  <dt>
+    <% can_vote = answer.user_id != current_user.id && !answer.votes.find { |vote| vote.user_id == current_user.id } %>
+    <% if can_vote %>
+      <%= link_to '+', vote_up_answer_path(answer) %>
+    <% end %>
+    <%= answer.votes.sum { |r| r.value ? 1 : -1 } %>
+    <% if can_vote %>
+      <%= link_to '-', vote_down_answer_path(answer) %>
+    <% end %>
+  </dt>
+  <dd>
+    <%= answer.text %>
+  </dd>
+</li>

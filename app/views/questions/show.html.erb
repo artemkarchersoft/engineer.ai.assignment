@@ -21,9 +21,15 @@
   </div>
   <div class="answers">
     <div class="list">
-      <% @question.answers.each do |answer| %>
-        <%= render 'answer', answer: answer %>
-      <% end %>
+      <dl>
+        <% @question.answers.preload(:votes).each do |answer| %>
+          <%= render 'answers/show', answer: answer %>
+        <% end %>
+      </dl>
     </div>
   </div>
 </div>
+
+<% unless current_user.id == @question.user_id %>
+  <%= render 'answers/new' %>
+<% end %>

@@ -1,1 +1,35 @@
 @import "material";
+
+.top {
+  width: 100%;
+}
+
+.tar {
+  text-align: right;
+}
+
+.tal {
+  text-align: left;
+}
+
+.list {
+  .list-item {
+    display: block;
+    font-size: 18pt;
+  }
+}
+
+.question {
+  form {
+    display: table;
+  }
+}
+
+.answers {
+  dt {
+    margin-left: 2em;
+  }
+  dd {
+    margin-left: 5em;
+  }
+}
