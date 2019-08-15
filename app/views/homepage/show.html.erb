@@ -1,14 +1,20 @@
 <div class="list">
   <dl>
-    <% @questions.each do |question| %>
-      <div class="list-item">
-        <li class="left tal">
-          <%
-            title = question.title
-            title += '&nbsp' + t('questions.new_answers', count: @new_answers[question.id].to_i) if @new_answers[question.id].to_i > 0
-          %>
-          <%= link_to(title.html_safe, question_path(question)) %>
-        </li>
+    <% if @questions.size > 0 %>
+      <% @questions.each do |question| %>
+        <div class="list-item">
+          <li class="left tal">
+            <%
+              title = question.title
+              title += '&nbsp' + t('questions.new_answers', count: @new_answers[question.id].to_i) if @new_answers[question.id].to_i > 0
+            %>
+            <%= link_to(title.html_safe, question_path(question)) %>
+          </li>
+        </div>
+      <% end %>
+    <% else %>
+      <div class="top tar">
+        <%= link_to(I18n.t('questions.new'), new_question_path) %>
       </div>
     <% end %>
   </dl>
