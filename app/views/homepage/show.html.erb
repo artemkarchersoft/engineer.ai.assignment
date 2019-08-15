@@ -1,1 +1,15 @@
-<h3>Home page; welcome</h3>
+<div class="list">
+  <dl>
+    <% @questions.each do |question| %>
+      <div class="list-item">
+        <li class="left tal">
+          <%
+            title = question.title
+            title += '&nbsp' + t('questions.new_answers', count: @new_answers[question.id].to_i) if @new_answers[question.id].to_i > 0
+          %>
+          <%= link_to(title.html_safe, question_path(question)) %>
+        </li>
+      </div>
+    <% end %>
+  </dl>
+</div>

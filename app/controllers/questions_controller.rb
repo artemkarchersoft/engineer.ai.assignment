@@ -60,6 +60,7 @@ class QuestionsController < ApplicationController
       .user_questions
       .where(question: @question)
       .first_or_create
+      .update(seen_answer_id: seen_answer_id)
 
     redirect_to question_path(@question)
   end
@@ -84,6 +85,12 @@ class QuestionsController < ApplicationController
   end
 
   def seen_answer_id
-    @question.answers.select(:id).order(id: :desc).limit(1).pluck(:id).first
+    @question
+      .answers
+      .select(:id)
+      .order(id: :desc)
+      .limit(1)
+      .pluck(:id)
+      .first
   end
 end
