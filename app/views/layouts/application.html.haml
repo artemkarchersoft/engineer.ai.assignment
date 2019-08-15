@@ -1,0 +1,28 @@
+!!!
+%html
+  %head
+    %meta{content: 'text/html; charset=UTF-8', 'http-equiv' => 'Content-Type'}/
+    %meta{charset: 'utf-8'}/
+    %meta{content: 'width=device-width, initial-scale=1, shrink-to-fit=no', name: 'viewport'}/
+    %title= 'Questions/Answers. Done by Artem Kuvychka'
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+    = toastr_flashes
+  %body
+    %header
+      .d-flex.flex-column.flex-md-row.align-items-center.p-1.px-md-4.mb-3.bg-white.border-bottom.shadow-sm
+        %h5.my-0.mr-md-auto.font-weight-normal= link_to 'Questions/Answers', root_path
+        %nav.my-2.my-md-0.mr-md-3
+          %a.p-2.text-dark= link_to(I18n.t('questions.title'), questions_path)
+
+        - if signed_in?
+          %span.m-2= "#{current_user.email}"
+          = link_to t('common.sign_out'), destroy_user_session_path, method: :delete, class: 'm-2 btn btn-secondary'
+        - else
+          = link_to t('common.sign_in'), user_session_path, class: 'm-1 btn btn-primary'
+          = link_to t('common.sign_up'), new_user_registration_path, class: 'm-2 btn btn-success'
+    %main.container{role: 'main'}
+      .px-5.py-2
+        = yield
