@@ -1,0 +1,29 @@
+<div class="top tar">
+  <%= link_to(I18n.t('common.back'), questions_path) %>
+  <br>
+  <% if current_user.id == @question.user_id %>
+    <%= link_to(I18n.t('questions.edit'), edit_question_path(@question)) %>
+  <% end %>
+  <br>
+  <% if current_user.user_questions.where(question: @question).exists? %>
+    <%= link_to(I18n.t('questions.unfollow'), unfollow_question_path(@question)) %>
+  <% else %>
+    <%= link_to(I18n.t('questions.follow'), follow_question_path(@question)) %>
+  <% end %>
+</div>
+
+<div class="question">
+  <div class="details">
+    <h3><%= @question.title %></h3>
+    <hr>
+    <p><%= @question.description %></p>
+    <hr>
+  </div>
+  <div class="answers">
+    <div class="list">
+      <% @question.answers.each do |answer| %>
+        <%= render 'answer', answer: answer %>
+      <% end %>
+    </div>
+  </div>
+</div>

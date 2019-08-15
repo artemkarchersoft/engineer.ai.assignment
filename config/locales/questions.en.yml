@@ -1,0 +1,11 @@
+en:
+  questions:
+    title: Questions
+    new: Add a question
+    submit: publish
+    edit: Edit
+    follow: Follow
+    unfollow: Unfollow
+    fields:
+      title: Title
+      description: Description

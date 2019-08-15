@@ -1,0 +1,15 @@
+<div class="top tar">
+  <%= link_to(I18n.t('questions.new'), new_question_path) %>
+</div>
+
+<div class="list">
+  <dl>
+    <% @questions.each do |question| %>
+      <div class="list-item">
+        <li class="left tal">
+          <%= link_to(question.title, question_path(question)) %>
+        </li>
+      </div>
+    <% end %>
+  </dl>
+</div>
